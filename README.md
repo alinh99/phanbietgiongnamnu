@@ -100,11 +100,11 @@ Conda compares versions and then displays what is available to install.
 If a newer version of conda is available, type y to update:
 
 		Proceed ([y]/n)? y
-Tip
+#### Tip
 
 We recommend that you always keep conda updated to the latest version.
 
-# Managing environments
+## Managing environments
 Conda allows you to create separate environments containing files, packages, and their dependencies that will not interact with other environments.
 
 When you begin using conda, you already have a default environment named base. You don't want to put programs into your base environment, though. Create separate environments to keep your programs isolated from each other.
@@ -125,7 +125,7 @@ Windows: conda activate snowflakes
 
 macOS and Linux: conda activate snowflakes
 
-Note
+#### Note
 
 conda activate only works on conda 4.6 and later versions.
 
@@ -146,13 +146,13 @@ A list of environments appears, similar to the following:
 
     base           /home/username/Anaconda3
     snowflakes   * /home/username/Anaconda3/envs/snowflakes
-Tip
+#### Tip
 
 The active environment is the one with an asterisk (*).
 
 4. Change your current environment back to the default (base): conda activate
 
-Note
+#### Note
 
 For versions prior to conda 4.6, use:
 
@@ -160,7 +160,7 @@ Windows: activate
 
 macOS, Linux: source activate
 
-Tip
+#### Tip
 
 When the environment is deactivated, its name is no longer shown in your prompt, and the asterisk (*) returns to base. To verify, you can repeat the conda info --envs command.
 
@@ -178,7 +178,7 @@ Windows: conda activate snakes
 
 macOS and Linux: conda activate snakes
 
-Note
+#### Note
 
 conda activate only works on conda 4.6 and later versions.
 
@@ -193,7 +193,7 @@ macOS and Linux: source activate snakes
 		conda info --envs
 Conda displays the list of all environments with an asterisk (*) after the name of the active environment:
 
-# conda environments:
+## conda environments:
 #
 base                     /home/username/anaconda3
 snakes                *  /home/username/anaconda3/envs/snakes
@@ -246,18 +246,18 @@ Now, the output will be appended to the end of output.txt.
 ### Stop python file
 To exit interactive mode, you can use one of the following options:
 
-	- quit() or exit(), which are built-in functions
-	- The Ctrl+Z and Enter key combination on Windows, or just Ctrl+D on Unix-like systems
+#### - quit() or exit(), which are built-in functions
+#### - The Ctrl+Z and Enter key combination on Windows, or just Ctrl+D on Unix-like systems
 Note: The first rule of thumb to remember when using Python is that if you’re in doubt about what a piece of Python code does, then launch an interactive session and try it out to see what happens.
 
 If you’ve never worked with the command-line or terminal, then you can try this:
 
-	On Windows, the command-line is usually known as command prompt or MS-DOS console, and it is a program called cmd.exe. The path to this program can vary significantly from one system version to another.
+#### On Windows, the command-line is usually known as command prompt or MS-DOS console, and it is a program called cmd.exe. The path to this program can vary significantly from one system version to another.
 
-	A quick way to get access to it is by pressing the Win+R key combination, which will take you to the Run dialog. Once you’re there, type in cmd and press Enter.
+#### A quick way to get access to it is by pressing the Win+R key combination, which will take you to the Run dialog. Once you’re there, type in cmd and press Enter.
 
-	On GNU/Linux (and other Unixes), there are several applications that give you access to the system command-line. Some of the most popular are xterm, Gnome Terminal, and Konsole. These are tools that run a shell or terminal like Bash, ksh, csh, and so on.
+#### On GNU/Linux (and other Unixes), there are several applications that give you access to the system command-line. Some of the most popular are xterm, Gnome Terminal, and Konsole. These are tools that run a shell or terminal like Bash, ksh, csh, and so on.
 
-	In this case, the path to these applications is much more varied and depends on the distribution and even on the desktop environment you use. So, you’ll need to read your system documentation.
+#### In this case, the path to these applications is much more varied and depends on the distribution and even on the desktop environment you use. So, you’ll need to read your system documentation.
 
-	On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
+#### On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
