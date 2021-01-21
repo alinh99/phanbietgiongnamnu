@@ -246,18 +246,18 @@ Now, the output will be appended to the end of output.txt.
 ### Stop python file
 To exit interactive mode, you can use one of the following options:
 
-#### - quit() or exit(), which are built-in functions
-#### - The Ctrl+Z and Enter key combination on Windows, or just Ctrl+D on Unix-like systems
+	- quit() or exit(), which are built-in functions
+	- The Ctrl+Z and Enter key combination on Windows, or just Ctrl+D on Unix-like systems
 Note: The first rule of thumb to remember when using Python is that if you’re in doubt about what a piece of Python code does, then launch an interactive session and try it out to see what happens.
 
 If you’ve never worked with the command-line or terminal, then you can try this:
 
-#### On Windows, the command-line is usually known as command prompt or MS-DOS console, and it is a program called cmd.exe. The path to this program can vary significantly from one system version to another.
+	On Windows, the command-line is usually known as command prompt or MS-DOS console, and it is a program called cmd.exe. The path to this program can vary significantly from one system version to another.
 
-#### A quick way to get access to it is by pressing the Win+R key combination, which will take you to the Run dialog. Once you’re there, type in cmd and press Enter.
+	A quick way to get access to it is by pressing the Win+R key combination, which will take you to the Run dialog. Once you’re there, type in cmd and press Enter.
 
-#### On GNU/Linux (and other Unixes), there are several applications that give you access to the system command-line. Some of the most popular are xterm, Gnome Terminal, and Konsole. These are tools that run a shell or terminal like Bash, ksh, csh, and so on.
+	On GNU/Linux (and other Unixes), there are several applications that give you access to the system command-line. Some of the most popular are xterm, Gnome Terminal, and Konsole. These are tools that run a shell or terminal like Bash, ksh, csh, and so on.
 
-#### In this case, the path to these applications is much more varied and depends on the distribution and even on the desktop environment you use. So, you’ll need to read your system documentation.
+	In this case, the path to these applications is much more varied and depends on the distribution and even on the desktop environment you use. So, you’ll need to read your system documentation.
 
-#### On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
+	On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
