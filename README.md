@@ -213,3 +213,32 @@ For versions prior to conda 4.6, use:
 Windows: activate
 
 macOS, Linux: source activate
+
+
+# STEP 3: 
+## Run Python Project in Command Line
+
+
+### Using the python Command
+To run Python scripts with the python command, you need to open a command-line and type in the word python, or python3 if you have both versions, followed by the path to your script, just like this:
+
+		$ python phanbiet_namnu.py
+
+If everything works okay, after you press Enter, you’ll see the output on your screen. That’s it! You’ve just run your first Python script!
+
+If this doesn’t work right, maybe you’ll need to check your system PATH, your Python installation, the way you created the hello.py script, the place where you saved it, and so on.
+
+This is the most basic and practical way to run Python scripts.
+
+### Redirecting the Output
+Sometimes it’s useful to save the output of a script for later analysis. Here’s how you can do that:
+
+		$ python phanbiet_namnu.py > output.txt
+This operation redirects the output of your script to output.txt, rather than to the standard system output (stdout). The process is commonly known as stream redirection and is available on both Windows and Unix-like systems.
+
+If output.txt doesn’t exist, then it’s automatically created. On the other hand, if the file already exists, then its contents will be replaced with the new output.
+
+Finally, if you want to add the output of consecutive executions to the end of output.txt, then you must use two angle brackets (>>) instead of one, just like this:
+
+		$ python phanbiet_namnu.py >> output.txt
+Now, the output will be appended to the end of output.txt.
