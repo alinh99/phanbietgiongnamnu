@@ -188,7 +188,6 @@ test_accuracy = sess.run([accuracy], feed_dict={x: x_test, y: y_test})
 print("Testing accuracy = {}".format(test_accuracy))
 
 # compare 4 algorithm with bar chart
-import matplotlib.pyplot as plt
 fig = plt.figure()
 ax = fig.add_axes([0.1, 0.05, 0.8, 0.9])
 langs = ['Linear Regression', 'Random Forests', 'XGBoost', 'Neural Network']
