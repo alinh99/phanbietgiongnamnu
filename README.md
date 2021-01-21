@@ -88,7 +88,7 @@ Conda displays the number of the version that you have installed. You do not nee
 
 EXAMPLE: conda 4.7.12
 
-Note
+### Note
 
 If you get an error message, make sure you closed and re-opened the terminal window after installing, or do it now. Then verify that you are logged into the same user account that you used to install Anaconda or Miniconda.
 
@@ -215,9 +215,17 @@ Windows: activate
 macOS, Linux: source activate
 
 
-# STEP 3: 
-## Run Python Project in Command Line
 
+# STEP 3: 
+
+## Install some libraries
+
+
+
+
+
+# STEP 4: 
+## Run Python Project in Command Line
 
 ### Using the python Command
 To run Python scripts with the python command, you need to open a command-line and type in the word python, or python3 if you have both versions, followed by the path to your script, just like this:
@@ -262,9 +270,7 @@ If you’ve never worked with the command-line or terminal, then you can try thi
 
 	On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
 
-
-
-# Run Python Scripts From an IDE or a Text Editor
+## Run Python Scripts From an IDE or a Text Editor
 When developing larger and more complex applications, it is recommended that you use an integrated development environment (IDE) or an advanced text editor.
 
 Most of these programs offer the possibility of running your scripts from inside the environment itself. It is common for them to include a Run or Build command, which is usually available from the tool bar or from the main menu.
@@ -277,7 +283,7 @@ Advanced text editors like Sublime Text and Visual Studio Code also allow you to
 
 To grasp the details of how to run Python scripts from your preferred IDE or editor, you can take a look at its documentation.
 
-# Run Python Scripts From a File Manager
+## Run Python Scripts From a File Manager
 Running a script by double-clicking on its icon in a file manager is another possible way to run your Python scripts. This option may not be widely used in the development stage, but it may be used when you release your code for production.
 
 In order to be able to run your scripts with a double-click, you must satisfy some conditions that will depend on your operating system.
