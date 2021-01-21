@@ -153,7 +153,7 @@ hidden_3 = tf.nn.relu(layer(hidden_2, 10, 5, 'hidden_layer_3'))
 output = layer(hidden_3, 5, 2, 'output')
 
 # Calculating loss function (cross-entropy)
-loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=output, labels=y), name='xent')
+loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=output, labels=y), name='xent')
 
 # Training
 optimizer = tf.compat.v1.train.GradientDescentOptimizer(learning_rate=1e-3)
