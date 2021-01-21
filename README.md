@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/joommf/conda-install.svg?branch=master)](https://travis-ci.org/joommf/conda-install)
 
-## Step 1
-# conda install
+# STEP 1
+## conda install
 
 Jupyter OOMMF can be installed via conda. The basic steps are:
 
