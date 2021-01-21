@@ -261,3 +261,33 @@ If you’ve never worked with the command-line or terminal, then you can try thi
 	In this case, the path to these applications is much more varied and depends on the distribution and even on the desktop environment you use. So, you’ll need to read your system documentation.
 
 	On Mac OS X, you can access the system terminal from Applications → Utilities → Terminal.
+
+
+
+# Run Python Scripts From an IDE or a Text Editor
+When developing larger and more complex applications, it is recommended that you use an integrated development environment (IDE) or an advanced text editor.
+
+Most of these programs offer the possibility of running your scripts from inside the environment itself. It is common for them to include a Run or Build command, which is usually available from the tool bar or from the main menu.
+
+Python’s standard distribution includes IDLE as the default IDE, and you can use it to write, debug, modify, and run your modules and scripts.
+
+Other IDEs such as Eclipse-PyDev, PyCharm, Eric, and NetBeans also allow you to run Python scripts from inside the environment.
+
+Advanced text editors like Sublime Text and Visual Studio Code also allow you to run your scripts.
+
+To grasp the details of how to run Python scripts from your preferred IDE or editor, you can take a look at its documentation.
+
+# Run Python Scripts From a File Manager
+Running a script by double-clicking on its icon in a file manager is another possible way to run your Python scripts. This option may not be widely used in the development stage, but it may be used when you release your code for production.
+
+In order to be able to run your scripts with a double-click, you must satisfy some conditions that will depend on your operating system.
+
+Windows, for example, associates the extensions .py and .pyw with the programs python.exe and pythonw.exe respectively. This allows you to run your scripts by double-clicking on them.
+
+When you have a script with a command-line interface, it is likely that you only see the flash of a black window on your screen. To avoid this annoying situation, you can add a statement like input('Press Enter to Continue...') at the end of the script. This way, the program will stop until you press Enter.
+
+This trick has its drawbacks, though. For example, if your script has any error, the execution will be aborted before reaching the input() statement, and you still won’t be able to see the result.
+
+On Unix-like systems, you’ll probably be able to run your scripts by double-clicking on them in your file manager. To achieve this, your script must have execution permissions, and you’ll need to use the shebang trick you’ve already seen. Likewise, you may not see any results on screen when it comes to command-line interface scripts.
+
+Because the execution of scripts through double-click has several limitations and depends on many factors (such as the operating system, the file manager, execution permissions, file associations), it is recommended that you see it as a viable option for scripts already debugged and ready to go into production.
