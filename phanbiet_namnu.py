@@ -135,7 +135,7 @@ y_test = LabelEncoder().fit_transform(y_test)
 y_test = convertToOneHot(y_test, 2)
 
 import tensorflow as tf
-
+tf.compat.v1.disable_eager_execution()
 
 def layer(input, n_input, n_output, name='hidden_layer'):
     W = tf.Variable(tf.random.truncated_normal([n_input, n_output], stddev=0.1), name='W')
@@ -144,8 +144,8 @@ def layer(input, n_input, n_output, name='hidden_layer'):
 
 
 # TF Graph
-x = tf.placeholder(tf.float32, shape=[None, 20], name="x")
-y = tf.placeholder(tf.float32, shape=[None, 2], name="y")
+x = tf.compat.v1.placeholder(tf.float32, shape=[None, 20], name="x")
+y = tf.compat.v1.placeholder(tf.float32, shape=[None, 2], name="y")
 
 hidden_1 = tf.nn.relu(layer(x, 20, 15, 'hidden_layer_1'))
 hidden_2 = tf.nn.relu(layer(hidden_1, 15, 10, 'hidden_layer_2'))
@@ -156,15 +156,15 @@ output = layer(hidden_3, 5, 2, 'output')
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=output, labels=y), name='xent')
 
 # Training
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-3)
+optimizer = tf.compat.v1.train.GradientDescentOptimizer(learning_rate=1e-3)
 train = optimizer.minimize(loss)
 
 # Accuracy
 correct_prediction = tf.equal(tf.argmax(output, 1), tf.argmax(y, 1), name="correct_prediction")
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name="accuracy")
 
-sess = tf.Session()
-init = tf.global_variables_initializer()
+sess = tf.compat.v1.Session()
+init = tf.compat.v1.global_variables_initializer()
 sess.run(init)
 
 num_epochs = 1000
