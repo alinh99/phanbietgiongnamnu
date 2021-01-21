@@ -220,8 +220,29 @@ macOS, Linux: source activate
 
 ## Install some libraries
 
+### numpy
+		$ pip install numpy
 
+### pandas
+		$ pip install pandas
+		
+### matplotlib
+		$ pip install matplotlib
+		
+### sckit-learn
+		$ pip install -U scikit-learn
 
+### (seaborn)
+		$ pip install seaborn
+		
+### (check-output)
+		$ pip install pytest-subprocess
+		
+### xgboost
+		$ pip install xgboost
+
+### tensorflow
+		$ pip install tensorflow==1.14.0
 
 
 # STEP 4: 
