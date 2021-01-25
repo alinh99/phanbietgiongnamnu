@@ -1,38 +1,93 @@
 import numpy as np  # linear algebra
 import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 import sklearn as sk
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 from subprocess import check_output
 import os
 
-# for dirname, _, filenames in os.walk('input'):
-#     for filename in filenames:
-#         print(os.path.join(dirname, filename))
+for dirname, _, filenames in os.walk('input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
 
+sns.set(color_codes=True)
+np.random.seed(sum(map(ord, "distributions")))
 data = pd.read_csv("input/voice.csv")
-# print(data)
+print(data)
 
 data.label = [1 if each == 'male' else 0 for each in data.label]
-# print(data)
-
 male = data[data.label == 1]
 female = data[data.label == 0]
 
-# plt.figure(figsize=(9, 9))
-# plt.scatter(male.meanfreq, male.meanfun, color="blue", label="male", alpha=0.2)
-# plt.scatter(female.meanfreq, female.meanfun, color="green", label="female", alpha=0.2)
-# plt.legend()
-# plt.xlabel("MeanFreq")
-# plt.ylabel("Meanfun")
-# plt.show()
+data.label.value_counts().plot(kind='bar',color=['black','red']) # so sánh giá trị của cột label
 
-y = data.label.values
-x = data.drop(["label"], axis=1)
+plt.figure(figsize=(9, 9))
+plt.scatter(male.meanfreq, male.meanfun, color="blue", label="male", alpha=0.2)
+plt.scatter(female.meanfreq, female.meanfun, color="green", label="female", alpha=0.2)
+plt.title("Voice of male and female in function of meanfun and meanfreq")
+plt.legend()
+plt.xlabel("MeanFreq")
+plt.ylabel("Meanfun")
+plt.show()
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=5)
+sns.distplot(data.meanfreq)
+plt.show()
+
+sns.distplot(data.label)
+plt.show()
+
+sns.distplot(data.centroid)
+plt.show()
+
+sns.distplot(data.meanfun)
+plt.show()
+
+correlation = data.corr()  # tìm sự tương quan của các cột với nhau
+
+fig, ax = plt.subplots(figsize=(15, 15)) # có kích thước cột và hàng là 15 x 15
+sns.heatmap(
+    correlation, # đưa dữ liệu vào biển đồ
+    vmin=-1, vmax=1, center=0, # giải thích màu tương ứng với max min and center
+    cmap=sns.diverging_palette(20, 220, n=600), # màu sắc của biểu đồ
+    square=False, # điều chỉnh lại kích thước của hàng và cột
+    ax=ax,
+    annot=True # hiển thị text chi tiết của hàng và cột đó
+)
+
+ax.set_xticklabels(
+    ax.get_xticklabels(), # hiển thị tên cột
+    rotation=45, # xoay 45 độ cho cột x
+    horizontalalignment='right' # ngang về hướng phải
+)
+
+
+x = data.iloc[:, :-1].values
+y = data.iloc[:, -1].values
+
+# Encoding label (male=1 and female=0)
+encoder = LabelEncoder()
+y = encoder.fit_transform(y)
+print(y)
+
+# Standarizing features
+scaler = StandardScaler()
+scaler.fit(x)
+x = scaler.transform(x)
+
+
+# Creating Training and Test sets
+# # 70-30% of train and test
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.30)
+x_train, x_test, y_train, y_test = np.array(x_train, dtype='float32'), np.array(x_test, dtype='float32'), np.array(
+    y_train, dtype='float32'), np.array(y_test, dtype='float32')
+
 log = LogisticRegression(max_iter=500)
 
 log.fit(x_train, y_train)
@@ -41,47 +96,13 @@ predicted_label = pd.DataFrame(log.predict(x_test))
 score = log.score(x_test, y_test)
 
 print("Accuracy of Logistic Regression: ", score)
-# print(predicted_label)
-# print(x_test)
-# print(check_output(["ls", "input"]).decode("utf8"))
-# print(data.head(10))
-# print(data.describe())
-# print(data.info())
+print(predicted_label)
+print(x_test)
+print(check_output(["ls", "input"]).decode("utf8"))
+print(data.head(10))
+print(data.describe())
+print(data.info())
 
-
-correlation = data.corr()  # tìm sự tương quan của các cột với nhau
-# print(correlation)
-#
-# plt.figure(figsize=(15, 15))
-#
-# print(sns.heatmap(correlation, square=True))
-# plt.show()
-# Importing sklearn libraries
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import StandardScaler
-from sklearn import metrics
-
-x = data.iloc[:, :-1].values
-y = data.iloc[:, -1].values
-# print(y)
-
-# Encoding label (male=1 and female=0)
-encoder = LabelEncoder()
-y = encoder.fit_transform(y)
-# print(y)
-
-# Standarizing features
-scaler = StandardScaler()
-scaler.fit(x)
-x = scaler.transform(x)
-# Creating Training and Test sets
-# # 70-30% of train and test
-# Xtrain, Xtest, ytrain, ytest = train_test_split(X, y, test_size=0.30)
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.30)
-x_train, x_test, y_train, y_test = np.array(x_train, dtype='float32'), np.array(x_test,dtype='float32'), np.array(y_train, dtype='float32'), np.array(y_test, dtype='float32')
 
 # Random Forest
 random_forest = RandomForestClassifier()
@@ -109,7 +130,6 @@ xgb_accuracy = metrics.accuracy_score(y_test, y_pred)
 print("Accuracy of XGBoost: ", xgb_accuracy)
 
 
-
 def convertToOneHot(vector, num_classes=None):
     assert isinstance(vector, np.ndarray)
     assert len(vector) > 0
@@ -135,7 +155,9 @@ y_test = LabelEncoder().fit_transform(y_test)
 y_test = convertToOneHot(y_test, 2)
 
 import tensorflow as tf
+
 tf.compat.v1.disable_eager_execution()
+
 
 def layer(input, n_input, n_output, name='hidden_layer'):
     W = tf.Variable(tf.random.truncated_normal([n_input, n_output], stddev=0.1), name='W')
@@ -153,7 +175,7 @@ hidden_3 = tf.nn.relu(layer(hidden_2, 10, 5, 'hidden_layer_3'))
 output = layer(hidden_3, 5, 2, 'output')
 
 # Calculating loss function (cross-entropy)
-loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=output, labels=y), name='xent')
+loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=output, labels=y), name='xent')
 
 # Training
 optimizer = tf.compat.v1.train.GradientDescentOptimizer(learning_rate=1e-3)
@@ -193,4 +215,7 @@ ax = fig.add_axes([0.1, 0.05, 0.8, 0.9])
 langs = ['Linear Regression', 'Random Forests', 'XGBoost', 'Neural Network']
 algorithms = [score, random_accuracy, xgb_accuracy, test_accuracy]
 ax.bar(langs, algorithms)
+plt.xlabel("Algorithms")
+plt.ylabel("Percent")
+plt.title("Compare Algorithms")
 plt.show()
